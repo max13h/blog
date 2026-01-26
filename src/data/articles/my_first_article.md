@@ -1,8 +1,8 @@
 ---
-title: "Test"
+title: "My first article"
 description: "Test but in description"
 pubDate: "2026-01-22"
-slug: "this is a test"
+slug: "this_is_a_my_first_article"
 ---
 
 # Ceci est un super test

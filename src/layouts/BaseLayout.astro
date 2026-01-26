@@ -1,3 +1,10 @@
+---
+interface Props {
+  title?: string
+}
+const { title } = Astro.props
+---
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -6,7 +13,7 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="stylesheet" type="text/css" href="/styles/index.css" />
     <meta name="generator" content={Astro.generator} />
-    <title>Maxime Hmae's blog</title>
+    <title>{(title ? title + " | " : "") + "Maxime Hmae's blog"}</title>
   </head>
   <body>
     <slot />
