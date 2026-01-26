@@ -3,7 +3,5 @@ import { defineConfig } from "astro/config"
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://blog.hmae.fr/",
-  base: "/",
-  trailingSlash: "ignore",
+  site: "https://blog.hmae.fr",
 })
