@@ -1,0 +1,48 @@
+---
+import { Icon } from "astro-icon/components"
+import UIDarkModeBtn from "./UIDarkModeBtn.astro"
+
+const { class: className, ...rest } = Astro.props
+---
+
+<nav class={className} {...rest}>
+  <a href="/public" class="home">
+    <img src="/favicon.svg" alt="Link to home page" />
+    blog
+  </a>
+
+  <div class="links">
+    <a href="https://github.com/max13h/" target="_blank">
+      <Icon name="github" title="Link to my github profil" />
+    </a>
+    <a href="https://www.linkedin.com/in/hmae/" target="_blank">
+      <Icon name="linkedin" title="Link to my linkedin profil" />
+    </a>
+    <UIDarkModeBtn />
+  </div>
+</nav>
+
+<style>
+  nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+
+    & .home {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      position: relative;
+    }
+
+    & .links {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      & a {
+        font-size: 1.5rem;
+      }
+    }
+  }
+</style>

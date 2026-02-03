@@ -1,0 +1,48 @@
+---
+import { Icon } from "astro-icon/components"
+---
+
+<button
+  id="themeToggle"
+  aria-label="Choose website theme between light mode, dark mode or adapt to system"
+>
+  <Icon name="monitor" title="Website theme is set to light" />
+  <Icon name="weather-sunny" title="Website theme is set to light" />
+  <Icon name="weather-moon" title="Website theme is set to dark" />
+</button>
+
+<script is:inline lang="ts">
+  const theme = (() => {
+    const localStorageTheme = localStorage?.getItem("theme") ?? ""
+    if (["dark", "light"].includes(localStorageTheme)) {
+      return localStorageTheme
+    }
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      return "dark"
+    }
+    return "light"
+  })()
+
+  const setThemeClass = (theme: "light" | "dark") => {
+    if (theme === "light") {
+      document.documentElement.classList.remove("dark")
+      document.documentElement.classList.add("light")
+    } else {
+      document.documentElement.classList.remove("light")
+      document.documentElement.classList.add("dark")
+    }
+  }
+
+  const setThemeLocalStorage = () => window.localStorage.setItem("theme", theme)
+
+  const handleToggleClick = () => {
+    element.classList.toggle("dark")
+
+    const isDark = element.classList.contains("dark")
+    localStorage.setItem("theme", isDark ? "dark" : "light")
+  }
+
+  document
+    .getElementById("themeToggle")
+    ?.addEventListener("click", handleToggleClick)
+</script>
