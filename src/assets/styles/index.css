@@ -7,6 +7,8 @@
   --color-light: #f8f8f8;
   --color-action: #95f348;
   --color-decoration: #298319;
+
+  --icon-size: 1.5rem;
 }
 
 html {

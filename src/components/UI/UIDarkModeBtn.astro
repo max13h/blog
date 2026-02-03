@@ -1,46 +1,130 @@
 ---
 import { Icon } from "astro-icon/components"
+
+const icons = [
+  {
+    theme: "default",
+    name: "monitor",
+    title: "Website theme related to user default configuration",
+  },
+  {
+    theme: "light",
+    name: "weather-sunny",
+    title: "Website theme is set to light",
+  },
+  {
+    theme: "dark",
+    name: "weather-moon",
+    title: "Website theme is set to dark",
+  },
+]
 ---
 
 <button
   id="themeToggle"
   aria-label="Choose website theme between light mode, dark mode or adapt to system"
+  name="themeToggle"
+  type="button"
 >
-  <Icon name="monitor" title="Website theme is set to light" />
-  <Icon name="weather-sunny" title="Website theme is set to light" />
-  <Icon name="weather-moon" title="Website theme is set to dark" />
+  {
+    icons.map((el) => (
+      <Icon
+        data-theme={el.theme}
+        name={el.name}
+        title={el.title}
+        size="1.5rem"
+      />
+    ))
+  }
 </button>
 
+<style>
+  #themeToggle {
+    background: none;
+    border: none;
+  }
+  #themeToggle:hover {
+    cursor: pointer;
+  }
+  .is-hidden {
+    display: none;
+  }
+</style>
+
 <script is:inline lang="ts">
-  const theme = (() => {
-    const localStorageTheme = localStorage?.getItem("theme") ?? ""
-    if (["dark", "light"].includes(localStorageTheme)) {
+  const themeOptions = ["default", "light", "dark"]
+
+  const getUserTheme = () => {
+    const localStorageTheme = window.localStorage.getItem("theme") || ""
+    if (themeOptions.includes(localStorageTheme)) {
       return localStorageTheme
     }
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    if (
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+    ) {
       return "dark"
     }
-    return "light"
-  })()
+    return "default"
+  }
 
-  const setThemeClass = (theme: "light" | "dark") => {
+  const getNextOption = (theme) =>
+    ({ default: "light", light: "dark", dark: "default" })[theme]
+
+  const setThemeClass = (theme) => {
+    const root = document.documentElement
     if (theme === "light") {
-      document.documentElement.classList.remove("dark")
-      document.documentElement.classList.add("light")
+      root.classList.remove("dark")
+      root.classList.add("light")
+    } else if (theme === "dark") {
+      root.classList.remove("light")
+      root.classList.add("dark")
     } else {
-      document.documentElement.classList.remove("light")
-      document.documentElement.classList.add("dark")
+      root.classList.remove("light")
+      root.classList.remove("dark")
     }
   }
 
-  const setThemeLocalStorage = () => window.localStorage.setItem("theme", theme)
+  const setThemeLocalStorage = (theme) =>
+    window.localStorage.setItem("theme", theme)
+
+  const updateButtonState = (button, theme) => {
+    button.setAttribute("data-theme", theme)
+    button.setAttribute("aria-pressed", String(theme !== "default"))
+
+    const icons = button.querySelectorAll("[data-theme]")
+
+    icons.forEach((icon) => {
+      const iconTheme = icon.getAttribute("data-theme") ?? ""
+      const isCurrent = iconTheme === theme
+
+      if (!isCurrent) {
+        icon.classList.add("is-hidden")
+        icon.setAttribute("aria-hidden", "true")
+        icon.setAttribute("tabindex", "-1")
+      } else {
+        icon.classList.remove("is-hidden")
+        icon.setAttribute("aria-hidden", "false")
+        icon.removeAttribute("tabindex")
+      }
+    })
+  }
+
+  const applyTheme = (theme, persist = false) => {
+    setThemeClass(theme)
+    if (persist) setThemeLocalStorage(theme)
+    const btn = document.getElementById("themeToggle")
+    if (btn) updateButtonState(btn, theme)
+  }
 
   const handleToggleClick = () => {
-    element.classList.toggle("dark")
-
-    const isDark = element.classList.contains("dark")
-    localStorage.setItem("theme", isDark ? "dark" : "light")
+    const current = getUserTheme()
+    const next = getNextOption(current)
+    applyTheme(next, true)
   }
+
+  const initial = getUserTheme()
+  applyTheme(initial, false)
 
   document
     .getElementById("themeToggle")
