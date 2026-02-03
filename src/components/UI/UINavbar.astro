@@ -2,22 +2,42 @@
 import { Icon } from "astro-icon/components"
 import UIDarkModeBtn from "./UIDarkModeBtn.astro"
 
+type IconElement = {
+  link: string
+  name: string
+  title: string
+}
+
 const { class: className, ...rest } = Astro.props
+
+const icons: IconElement[] = [
+  {
+    link: "https://github.com/max13h/",
+    name: "github",
+    title: "Link to my github profil",
+  },
+  {
+    link: "https://www.linkedin.com/in/hmae/",
+    name: "linkedin",
+    title: "Link to my linkedin profil",
+  },
+]
 ---
 
 <nav class={className} {...rest}>
-  <a href="/public" class="home">
+  <a href="/" class="home">
     <img src="/favicon.svg" alt="Link to home page" />
     blog
   </a>
 
   <div class="links">
-    <a href="https://github.com/max13h/" target="_blank">
-      <Icon name="github" title="Link to my github profil" />
-    </a>
-    <a href="https://www.linkedin.com/in/hmae/" target="_blank">
-      <Icon name="linkedin" title="Link to my linkedin profil" />
-    </a>
+    {
+      icons.map((icon) => (
+        <a href={icon.link} target="_blank">
+          <Icon name={icon.name} title={icon.title} />
+        </a>
+      ))
+    }
     <UIDarkModeBtn />
   </div>
 </nav>
@@ -33,6 +53,8 @@ const { class: className, ...rest } = Astro.props
       align-items: center;
       gap: 0.5rem;
       position: relative;
+      color: inherit;
+      text-decoration: none;
     }
 
     & .links {
@@ -42,6 +64,10 @@ const { class: className, ...rest } = Astro.props
 
       & a {
         font-size: 1.5rem;
+
+        &:visited {
+          color: inherit;
+        }
       }
     }
   }
