@@ -1,14 +1,16 @@
 /* Funnel Sans (wght) */
 @font-face {
   font-family: "Funnel Sans";
-  src: url("../fonts/FunnelSans-VariableFont_wght.woff2") format("woff2");
+  src: url("../../src/assets/fonts/FunnelSans-VariableFont_wght.woff2")
+    format("woff2");
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Funnel Sans";
-  src: url("../fonts/FunnelSans-Italic-VariableFont_wght.woff2") format("woff2");
+  src: url("../../src/assets/fonts/FunnelSans-Italic-VariableFont_wght.woff2")
+    format("woff2");
   font-weight: 100 900;
   font-style: italic;
   font-display: swap;
@@ -17,7 +19,8 @@
 /* Noto Serif (wdth, wght) - variable width + weight */
 @font-face {
   font-family: "Noto Serif Variable";
-  src: url("../fonts/NotoSerif-VariableFont_wdth,wght.woff2") format("woff2");
+  src: url("../../src/assets/fonts/NotoSerif-VariableFont_wdth,wght.woff2")
+    format("woff2");
   font-weight: 200 900;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -25,7 +28,7 @@
 }
 @font-face {
   font-family: "Noto Serif Variable";
-  src: url("../fonts/NotoSerif-Italic-VariableFont_wdth,wght.woff2")
+  src: url("../../src/assets/fonts/NotoSerif-Italic-VariableFont_wdth,wght.woff2")
     format("woff2");
   font-weight: 200 900;
   font-stretch: 75% 125%;
@@ -36,14 +39,16 @@
 /* Roboto Mono (wght) */
 @font-face {
   font-family: "Roboto Mono";
-  src: url("../fonts/RobotoMono-VariableFont_wght.woff2") format("woff2");
+  src: url("../../src/assets/fonts/RobotoMono-VariableFont_wght.woff2")
+    format("woff2");
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Roboto Mono";
-  src: url("../fonts/RobotoMono-Italic-VariableFont_wght.woff2") format("woff2");
+  src: url("../../src/assets/fonts/RobotoMono-Italic-VariableFont_wght.woff2")
+    format("woff2");
   font-weight: 100 900;
   font-style: italic;
   font-display: swap;
