@@ -1,13 +1,5 @@
 :root {
   color-scheme: light dark;
-
-  --light-bg: ghostwhite;
-  --light-color: darkslategray;
-  --light-code: tomato;
-
-  --dark-bg: darkslategray;
-  --dark-color: ghostwhite;
-  --dark-code: gold;
 }
 
 html,

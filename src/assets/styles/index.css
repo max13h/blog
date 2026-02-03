@@ -1,15 +1,7 @@
 @import "reset.css";
 @import "fonts.css";
 @import "dark.css";
-
-:root {
-  --color-dark: #1a1a1a;
-  --color-light: #f8f8f8;
-  --color-action: #10771f;
-  --color-decoration: #54238d;
-
-  --icon-size: 1.5rem;
-}
+@import "vars.css";
 
 html {
   width: 100%;

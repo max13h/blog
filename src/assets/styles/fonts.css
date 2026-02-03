@@ -1,20 +1,3 @@
-/* Expletus Sans (wght) */
-@font-face {
-  font-family: "Expletus Sans";
-  src: url("../fonts/ExpletusSans-VariableFont_wght.woff2") format("woff2");
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Expletus Sans";
-  src: url("../fonts/ExpletusSans-Italic-VariableFont_wght.woff2")
-    format("woff2");
-  font-weight: 100 900;
-  font-style: italic;
-  font-display: swap;
-}
-
 /* Funnel Sans (wght) */
 @font-face {
   font-family: "Funnel Sans";
@@ -67,15 +50,15 @@
 }
 
 :root {
-  --ui-sans:
-    "Funnel Sans", "Expletus Sans", system-ui, -apple-system, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial;
-  --ui-serif: "Noto Serif Variable", Georgia, "Times New Roman", Times;
-  --ui-mono: "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Monaco;
+  --font-sans:
+    "Funnel Sans", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial;
+  --font-serif: "Noto Serif Variable", Georgia, "Times New Roman", Times;
+  --font-mono: "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Monaco;
 }
 
 body {
-  font-family: var(--ui-serif), sans-serif;
+  font-family: var(--font-serif), sans-serif;
 }
 
 h1,
@@ -84,10 +67,10 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--ui-sans), serif;
+  font-family: var(--font-sans), serif;
 }
 
 code,
 pre {
-  font-family: var(--ui-mono), monospace;
+  font-family: var(--font-mono), monospace;
 }
