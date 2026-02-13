@@ -1,25 +1,15 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro"
-import { getCollection } from "astro:content"
 import UINavbar from "../components/UI/UINavbar.astro"
-
-const articles = await getCollection("articles")
+import ArticleList from "../components/Article/ArticleList.astro"
 ---
 
 <BaseLayout>
   <div class="container">
     <UINavbar class="nav" />
     <main>
-      <h1>Welcome to my personal blog</h1>
-      <ul>
-        {
-          articles.map((article) => (
-            <li>
-              <a href={`/articles/${article.id}`}>{article.data.title}</a>
-            </li>
-          ))
-        }
-      </ul>
+      <h1>Bienvenue sur mon blog personnel !</h1>
+      <ArticleList />
     </main>
   </div>
 </BaseLayout>
@@ -31,25 +21,12 @@ const articles = await getCollection("articles")
     position: relative;
     align-items: center;
 
-    & .nav {
-      position: sticky;
-      width: 100%;
-      top: 0;
-    }
-
     & main {
       display: flex;
       flex-direction: column;
       align-items: start;
       gap: 1rem;
       width: clamp(256px, 100vw, 900px);
-      & h1 {
-        text-align: center;
-      }
-      & ul {
-        display: flex;
-        width: 100%;
-      }
     }
   }
 </style>

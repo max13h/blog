@@ -1,0 +1,22 @@
+---
+import { getCollection } from "astro:content"
+import ArticleCard from "./ArticleCard.astro"
+import { sortArticleByPublicationDate } from "../../utils.ts"
+const articles = (await getCollection("articles")).sort(
+  sortArticleByPublicationDate,
+)
+---
+
+<ul>
+  {articles.map((article) => <ArticleCard article={article} />)}
+</ul>
+
+<style>
+  ul {
+    display: grid;
+    gap: 1rem;
+    list-style-type: none;
+    padding-inline: 0;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  }
+</style>

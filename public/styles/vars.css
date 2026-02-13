@@ -1,8 +1,18 @@
 :root {
-  --color-dark: #161f18;
-  --color-light: #f3fff3;
+  /* Colors */
   --color-action: #10771f;
   --color-decoration: #54238d;
+
+  --color-base-50: #f3fff3;
+  --color-base-100: #dae6db;
+  --color-base-200: #c2cdc2;
+  --color-base-300: #a9b4aa;
+  --color-base-400: #919b92;
+  --color-base-500: #788379;
+  --color-base-600: #606a61;
+  --color-base-700: #475149;
+  --color-base-800: #2f3830;
+  --color-base-950: #161f18;
 
   --color-neutral-50: #fafafa;
   --color-neutral-100: #f3f4f6;
@@ -16,13 +26,21 @@
   --color-neutral-900: #171717;
   --color-neutral-950: #0a0a0a;
 
-  --light-bg: var(--color-light);
+  --color-light: var(--color-base-50);
+  --color-dark: var(--color-base-950);
+
+  --bg-color: light-dark(var(--color-light), var(--color-dark));
+
   --light-color: var(--color-dark);
   --light-code: var(--color-neutral-400);
 
-  --dark-bg: var(--color-dark);
   --dark-color: var(--color-light);
   --dark-code: var(--color-neutral-600);
+
+  --text-color-default: light-dark(var(--light-color), var(--dark-color));
+
+  --card-light-bg: var(--color-neutral-400);
+  --card-dark-bg: var(--color-neutral-600);
 
   --icon-size: 1.5rem;
 }

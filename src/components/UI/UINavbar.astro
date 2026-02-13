@@ -27,7 +27,7 @@ const icons: IconElement[] = [
 <nav class={className} {...rest}>
   <a href="/" class="home">
     <img src="/favicon.svg" alt="Link to home page" />
-    blog
+    <span>blog.hmae.fr</span>
   </a>
 
   <div class="links">
@@ -47,6 +47,9 @@ const icons: IconElement[] = [
     display: flex;
     justify-content: space-between;
     padding: 1rem;
+    position: sticky;
+    width: 100%;
+    top: 0;
 
     & .home {
       display: flex;
@@ -69,6 +72,15 @@ const icons: IconElement[] = [
         &:visited {
           color: inherit;
         }
+      }
+    }
+  }
+
+  @media (width < 1280px) {
+    nav {
+      backdrop-filter: blur(1rem);
+      & .home span {
+        display: none;
       }
     }
   }

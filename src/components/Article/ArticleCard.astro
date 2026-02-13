@@ -1,0 +1,41 @@
+---
+import { type CollectionEntry } from "astro:content"
+export interface Props {
+  article: CollectionEntry<"articles">
+}
+
+const { article } = Astro.props
+---
+
+<li>
+  <a href={`/articles/${article.id}`}>
+    <p class="title">{article.data.title}</p>
+    <p class="description">{article.data.description}</p>
+  </a>
+</li>
+
+<style>
+  a {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    border-radius: 1rem;
+    padding: 1rem;
+    background-color: light-dark(
+      var(--color-neutral-300),
+      var(--color-neutral-700)
+    );
+    color: var(--text-color-default);
+    text-decoration: none;
+    box-shadow: 2px 2px 1px light-dark(var(--color-dark), var(--color-light));
+
+    & .title {
+      font-size: 1.5rem;
+      font-weight: 500;
+      line-height: 1.5rem;
+    }
+
+    & .description {
+    }
+  }
+</style>
